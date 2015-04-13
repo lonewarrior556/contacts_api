@@ -97,4 +97,16 @@ def destroy_contact
   puts RestClient.delete(url)
 end
 
-destroy_contact
+def update_contact
+  url = Addressable::URI.new(
+    scheme: 'http',
+    host: 'localhost',
+    port: 3000,
+    path: '/contacts/1.json'
+  ).to_s
+
+  puts RestClient.put(url, contact: {name: 'Robert'})
+
+end
+
+update_contact
