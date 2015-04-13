@@ -1,6 +1,10 @@
 class ContactShareController < ApplicationController
   def index
-    render text: "We're in the index contactshare"
+    render json: ContactShare.all
+  end
+
+  def show
+    render json: ContactShare.find(params[:id])
   end
 
   def create
@@ -13,4 +17,17 @@ class ContactShareController < ApplicationController
       )
     end
   end
+
+  def update
+    contact_share = ContactShare.find(params[:id])
+    contact_share.update!(params.require(:contact_share).permit(:user_id, :contact_id)
+    render json: contact_share
+  end
+
+  def destroy
+    contact_share = ContactShare.find(params[:id])
+    contact_share.destroy!
+    render json: contact_share
+  end
+
 end

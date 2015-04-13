@@ -21,7 +21,15 @@ Routesproject::Application.routes.draw do
   # delete 'users/:id' => 'users#destroy'
 
 resources :users, only: [:create, :destroy, :update, :show, :index]
+resources :users do
+  resources :contacts, only: :index
+  resources :contact_shares
+end
+
+
 resources :contacts, only: [:create, :destroy, :update, :show, :index]
+resources :contact_shares, only: [:create, :destroy, :update, :show, :index]
+
 
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
