@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
   def index
-    render text: "We're in the index action on contactcontroller"
+    render json: Contact.all
   end
 
   def create
@@ -11,6 +11,15 @@ class ContactsController < ApplicationController
       render(
         json: contact.errors.full_mesages, status: :unprocessable_entity
       )
+    end
+  end
+
+  def destroy
+    temp = Contact.find(params[:id])
+    if temp.destroy
+      render json: temp
+    else
+      render json: contact.errors.full_mesages, status: :unprocessable_entity
     end
   end
 end

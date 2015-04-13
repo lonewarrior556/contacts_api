@@ -52,4 +52,49 @@ def index_user
 
 end
 
-index_user
+def show_user
+  url = Addressable::URI.new(
+    scheme: 'http',
+    host: 'localhost',
+    port: 3000,
+    path: '/users/4.json'
+  ).to_s
+
+  puts RestClient.get(url)
+end
+
+def update_user
+  url = Addressable::URI.new(
+    scheme: 'http',
+    host: 'localhost',
+    port: 3000,
+    path: '/users/4.json'
+  ).to_s
+
+  puts RestClient.put(url, user: {username: 'lonewarrior100000'})
+end
+
+def index_contact
+  url = Addressable::URI.new(
+    scheme: 'http',
+    host: 'localhost',
+    port: 3000,
+    path: '/contacts.json'
+  ).to_s
+
+  puts RestClient.get(url)
+
+end
+
+def destroy_contact
+  url = Addressable::URI.new(
+    scheme: 'http',
+    host: 'localhost',
+    port: 3000,
+    path: '/contacts/2.json'
+  ).to_s
+
+  puts RestClient.delete(url)
+end
+
+destroy_contact

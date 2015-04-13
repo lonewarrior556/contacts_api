@@ -10,17 +10,18 @@ Routesproject::Application.routes.draw do
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-  get 'users' => 'users#index'
-  post 'users' => 'users#create'
-  get 'users/:id' => 'users#show'
-  get 'users/:new' => 'users#new', as: 'new_user'
-  get 'users/:id/edit' => 'users#edit', as: :edit_user
-  get 'users/:id' => 'users#show', as: :user
-  patch 'users/:id' => 'users#update'
-  put 'users/:id' => 'users#update'
-  delete 'users/:id' => 'users#destroy'
+  # get 'users' => 'users#index'
+  # post 'users' => 'users#create'
+  # get 'users/:id' => 'users#show'
+  # get 'users/:new' => 'users#new', as: 'new_user'
+  # get 'users/:id/edit' => 'users#edit', as: :edit_user
+  # get 'users/:id' => 'users#show', as: :user
+  # patch 'users/:id' => 'users#update'
+  # put 'users/:id' => 'users#update'
+  # delete 'users/:id' => 'users#destroy'
 
-
+resources :users, only: [:create, :destroy, :update, :show, :index]
+resources :contacts, only: [:create, :destroy, :update, :show, :index]
 
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
